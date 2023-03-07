@@ -86,14 +86,26 @@ async def dump_pending(ctx):
     load_data()
     df_pending_week.sort_values(by='trail', inplace=True)
     for i in df_pending_week['id'].to_list():
-        parsed_html = BeautifulSoup(ast.literal_eval(df_pending_week[df_pending_week['id']==i]['content'][0])['rendered'], features="lxml")
-        await ctx.respond(f" {df_prod[df_prod['id']==i]['resp'][0]} \n \
-                                    *Novo Comentário!* \n \
-                                    Trilha: {df_pending_week[df_pending_week['id']==i]['trail'][0]} \n \
-                                    Mensagem: {parsed_html.body.findAll('p')[0].text if len(parsed_html.body.findAll('p')) > 0 else ''} \n \
-                                    {parsed_html.body.findAll('p')[1].text if len(parsed_html.body.findAll('p')) > 1 else ''} \n \
-                                    Acesse --> {df_pending_week[df_pending_week['id']==i]['link'][0]} ")
-        time.sleep(5)
+        try:
+            parsed_html = BeautifulSoup(ast.literal_eval(df_pending_week[df_pending_week['id']==i]['content'][0])['rendered'], features="lxml")
+        except:
+            parsed_html = BeautifulSoup('-', features="lxml")
+        try:
+            await ctx.respond(f" {df_prod[df_prod['id']==i]['resp'][0]} \n \
+                                        *Novo Comentário!* \n \
+                                        Trilha: {df_pending_week[df_pending_week['id']==i]['trail'][0]} \n \
+                                        Mensagem: {parsed_html.body.findAll('p')[0].text if len(parsed_html.body.findAll('p')) > 0 else ''} \n \
+                                        {parsed_html.body.findAll('p')[1].text if len(parsed_html.body.findAll('p')) > 1 else ''} \n \
+                                        Acesse --> {df_pending_week[df_pending_week['id']==i]['link'][0]} ")
+            time.sleep(5)
+        except:
+            await ctx.respond(f" {df_prod[df_prod['id']==i]['resp'][0]} \n \
+                                        *Novo Comentário!* \n \
+                                        Trilha: {df_pending_week[df_pending_week['id']==i]['trail'][0]} \n \
+                                        Mensagem: - \n \
+                                        {parsed_html.body.findAll('p')[1].text if len(parsed_html.body.findAll('p')) > 1 else ''} \n \
+                                        Acesse --> {df_pending_week[df_pending_week['id']==i]['link'][0]} ")
+            time.sleep(5)
 
 
 #Dump my pending
