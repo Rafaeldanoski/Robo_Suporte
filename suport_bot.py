@@ -142,46 +142,6 @@ load_data()
 
 comments = df_pending['id'].to_list()
 
-################################# FULL DATASET ####################################
-# df_comments_full = pd.DataFrame()
-# for i in range(int(pages_count)):
-#     api_url_full = 'https://asimov.academy/wp-json/wp/v2/comments?page='+str((i+1))+'&per_page=100'
-#     response_full = requests.get(api_url_full)
-#     response_json_full = response_full.json()
-#     df_comments_page = pd.DataFrame(response_json_full).set_index("date")
-#     df_comments_page.index = pd.to_datetime(df_comments_page.index)
-#     df_comments_full = df_comments_full.append(df_comments_page)
-
-# df_comments_full['groups'] = [df_comments_full['link'][x].split('/') for x in range(len(df_comments_full))]
-# df_comments_full['course'] = ''
-# df_comments_full['lesson'] = ''
-# df_comments_full['topic'] = ''
-# for i in range(len(df_comments_full)):
-#     df_comments_full['course'][i] = df_comments_full['groups'][i][4]
-#     try:
-#         df_comments_full['lesson'][i] = df_comments_full['groups'][i][6]
-#     except:
-#         df_comments_full['lesson'][i] = ''
-#     try:
-#         df_comments_full['topic'][i] = df_comments_full['groups'][i][8]
-#     except:
-#         df_comments_full['topic'][i] = ''
-
-# dsml = ['machine-learning-ai-com-python', 'projetos-de-data-science']
-# quant = ['trading-quantitativo']
-# dip = ['dashboards-interativos-com-python', 'mybudget-acesso-livre']
-
-# df_comments_full['trail'] = ''
-# for i in range(len(df_comments_full)):
-#     if df_comments_full['course'][i] in dsml:
-#         df_comments_full['trail'][i] = 'DSML'
-#     elif df_comments_full['course'][i] in quant:
-#         df_comments_full['trail'][i] = 'QUANT'
-#     elif df_comments_full['course'][i] in dip:
-#         df_comments_full['trail'][i] = 'DIP'
-#     else:
-#         df_comments_full['trail'][i] = 'Python Starter'
-
 ################################ BOT DISCORD ####################################
 import hikari
 import lightbulb
