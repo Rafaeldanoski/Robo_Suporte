@@ -58,7 +58,6 @@ async def pending_msg(ctx):
         adriano = df_prod[df_prod['resp']=='<@671007727232745501>']['id'].to_list()
         juliano = df_prod[df_prod['resp']=='<@993487560431120464>']['id'].to_list()
         mateus = df_prod[df_prod['resp']=='<@343467764909998082>']['id'].to_list()
-        rafael = df_prod[df_prod['resp']=='<@695370056787296410>']['id'].to_list()
         tadewald = df_prod[df_prod['resp']=='<@690175403876548673>']['id'].to_list()
         vanzelotti = df_prod[df_prod['resp']=='<@279056011233460224>']['id'].to_list()
         
@@ -71,7 +70,6 @@ async def pending_msg(ctx):
                             Adri: {len(df_pending_week[df_pending_week['id'].isin(adriano)])} \n \
                             Mateus: {len(df_pending_week[df_pending_week['id'].isin(mateus)])} \n \
                             Juli: {len(df_pending_week[df_pending_week['id'].isin(juliano)])} \n \
-                            Rafa: {len(df_pending_week[df_pending_week['id'].isin(rafael)])} \n \
                             R. Tadewald: {len(df_pending_week[df_pending_week['id'].isin(tadewald)])} \n \
                             R. Vanzelotti: {len(df_pending_week[df_pending_week['id'].isin(vanzelotti)])} ")
         
