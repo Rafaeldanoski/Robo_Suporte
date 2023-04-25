@@ -10,17 +10,17 @@ import warnings
 warnings.filterwarnings("ignore")
 
 ############################ API #################################################
-wp_user = "rafael"
-wp_password = open('python_api_password.txt').read()
+# wp_user = "rafael"
+# wp_password = open('python_api_password.txt').read()
 
-wp_credentials = wp_user + ":" + wp_password
-wp_token = base64.b64encode(wp_credentials.encode())
-wp_header = {'Authorization': 'Basic ' + wp_token.decode('utf-8')}
+# wp_credentials = wp_user + ":" + wp_password
+# wp_token = base64.b64encode(wp_credentials.encode())
+# wp_header = {'Authorization': 'Basic ' + wp_token.decode('utf-8')}
 
-api_url = 'https://asimov.academy/wp-json/wp/v2/comments?page=1&per_page=100'
+# api_url = 'https://asimov.academy/wp-json/wp/v2/comments?page=1&per_page=100'
 
-response = requests.get(api_url)
-pages_count = response.headers['X-WP-TotalPages']
+# response = requests.get(api_url)
+# pages_count = response.headers['X-WP-TotalPages']
 
 def load_data():
     global df_pending_week, df_prod
