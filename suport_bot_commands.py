@@ -27,7 +27,7 @@ def load_data():
     df_prod = pd.read_csv('df_prod.csv', sep=';').set_index("date")
     df_prod.index = pd.to_datetime(df_prod.index)
 
-    resp_ids = [1, 694, 695, 2979, 232, 4127]
+    resp_ids = [1, 694, 695, 2979, 232, 4127, 8109]
     parent_list = df_prod['parent'].unique()
 
     d = datetime(2023,2,14)
